@@ -14,13 +14,15 @@ import java.util.List;
 public class dive {
     public int horizontal;
     public int depth;
+    public int aim;
 
     public dive() {
       horizontal = 0;
       depth = 0;
+      aim =  0;
     }
 
-    public String processCommand(String command) {
+    public String processCommandOne(String command) {
       String[] temp = command.trim().split(" ");
       int steps = Integer.parseInt(temp[1]);
       String direction = temp[0];
@@ -35,11 +37,33 @@ public class dive {
 
       return command;
     } 
+    
+    public String processCommandTwo(String command) {
+      String[] temp = command.trim().split(" ");
+      
+      int steps = Integer.parseInt(temp[1]);
+      String direction = temp[0];
+
+      if (direction.equals("forward")) {
+        horizontal += steps;
+        depth += aim * steps;
+      } else if (direction.equals("down")) {
+        aim += steps;
+      } else if (direction.equals("up")) {
+        aim -= steps;
+      }
+
+      return command;
+    } 
+
     public static void main(String[] args) {
       String fileName = "/Users/marty.whelan/aoc2021/day2/input2.txt"; 
       try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
         dive scenario = new dive();
-        stream.forEach(i -> scenario.processCommand(i));
+        
+        // stream.forEach(i -> scenario.processCommandOne(i));
+        stream.forEach(i -> scenario.processCommandTwo(i));
+        
         System.out.println(scenario.horizontal * scenario.depth);
       } catch (IOException e) {
           e.printStackTrace();
