@@ -57,7 +57,7 @@ public class dive {
     } 
 
     public static void main(String[] args) {
-      String fileName = "/Users/marty.whelan/aoc2021/day2/input2.txt"; 
+      String fileName = "day2/input2.txt"; 
       try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
         dive scenario = new dive();
         

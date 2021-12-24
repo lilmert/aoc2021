@@ -42,7 +42,7 @@ public class sonarSweep1 {
     return count;
   }
    public static void main(String[] args) {
-      String fileName = "/Users/marty.whelan/aoc2021/day1/input1.txt"; 
+      String fileName = "day1/input1.txt"; 
       try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
         List<Integer> input = stream.map(Integer::valueOf).collect(Collectors.toList());
         int answerOne = sweep1(input);

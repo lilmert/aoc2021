@@ -36,7 +36,7 @@ public class BinaryDiagnostic {
   }
 
   public static void main(String[] args) {
-    String fileName = "/Users/marty.whelan/aoc2021/day3/input3.txt"; 
+    String fileName = "day3/input3.txt"; 
     try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
       BinaryDiagnostic scenario = new BinaryDiagnostic();
       stream.forEach(i -> scenario.processBin(i));
